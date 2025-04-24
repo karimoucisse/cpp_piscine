@@ -1,19 +1,4 @@
-#include <stdio.h>
 #include <iostream>
-
-int gl = 4;
-
-int ret (void) {return 4; };
-
-namespace foo {
-	int gl = 6;
-	int ret (void) {return 10; };
-}
-
-namespace bar {
-	int gl = 0;
-	int ret (void) {return 2; };
-}
 
 int main(int ac, char **av)
 {
