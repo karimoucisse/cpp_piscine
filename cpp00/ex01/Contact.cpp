@@ -8,3 +8,4 @@ Contact::Contact(void){
 	this->phone_number = "";
 	this->darkest_secret = "";
 }
+

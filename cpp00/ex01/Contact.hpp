@@ -5,13 +5,13 @@
 
 class Contact{
 	public:
-		contact(void);
+		Contact(void);
 		std::string first_name;
 		std::string last_name;
 		std::string nickname;
 		std::string phone_number;
 		std::string darkest_secret;
-		~contact(void);
+		// ~Contact(void);
 };
 
-#endif CONTACT_H
+#endif
