@@ -8,8 +8,8 @@
 
 PhoneBook::PhoneBook(void)
 {
-	this->current_index = 0;
-	this->max_contact = 8;
+	this->_current_index = 0;
+	this->_max_contact = 8;
 	return ;
 }
 
@@ -17,11 +17,11 @@ PhoneBook::~PhoneBook(void){return;};
 
 void PhoneBook::add_contact_to_list(Contact *contact)
 {
-	if(this->current_index +1 <= this->max_contact)
-		this->contacts[current_index] = *contact;
+	if(this->_current_index +1 <= this->_max_contact)
+		this->_contacts[_current_index] = *contact;
 	else
-		this->contacts[current_index % this->max_contact] = *contact;
-	this->current_index++;
+		this->_contacts[_current_index % this->_max_contact] = *contact;
+	this->_current_index++;
 	return;
 }
 
@@ -93,11 +93,11 @@ std::string string_format(std::string str)
 	return trimed_str;
 }
 
-void PhoneBook::print_contact(int index)
+void PhoneBook::_print_contact(int index) const
 {
 	Contact contact;
 
-	contact = this->contacts[index - 1];
+	contact = this->_contacts[index - 1];
 	if (system("cls"))
 		system("clear");
 	std::cout << "First name: " << contact.first_name << std::endl;
@@ -107,25 +107,25 @@ void PhoneBook::print_contact(int index)
 	std::cout << "Darkest secret: " << contact.darkest_secret << std::endl;
 }
 
-void PhoneBook::print_contacts(void)
+void PhoneBook::_print_contacts(void) const
 {
 	set_list_header("index", "first name", "last name", "nickname");
-	int nbr_contact = this->current_index > this->max_contact ? this->max_contact : this->current_index;
+	int nbr_contact = this->_current_index > this->_max_contact ? this->_max_contact : this->_current_index;
 	for(int i = 0; i < nbr_contact; i++)
 	{
 		std::cout << std::setw(10) << i + 1 << '|';
-		std::cout << std::setw(10) << string_format(this->contacts[i].first_name) << '|';
-		std::cout << std::setw(10) << string_format(this->contacts[i].last_name) << '|';
-		std::cout << std::setw(10) << string_format(this->contacts[i].nickname) << '|' << std::endl;
+		std::cout << std::setw(10) << string_format(this->_contacts[i].first_name) << '|';
+		std::cout << std::setw(10) << string_format(this->_contacts[i].last_name) << '|';
+		std::cout << std::setw(10) << string_format(this->_contacts[i].nickname) << '|' << std::endl;
 	}
 }
 
-void PhoneBook::search_contact(void)
+void PhoneBook::search_contact(void) const
 {
 	std::string str = "";
-	int nbr_contact = this->current_index > this->max_contact ? this->max_contact : this->current_index;
+	int nbr_contact = this->_current_index > this->_max_contact ? this->_max_contact : this->_current_index;
 	int index;
-	print_contacts();
+	_print_contacts();
 	std::cout << "enter index: ";
 	getline(std::cin, str);
 	if(!str.empty() && str.length() == 1 && str.find_first_not_of("12345678"))
@@ -134,7 +134,7 @@ void PhoneBook::search_contact(void)
 		if(index <= 0 || index > nbr_contact)
 			std::cout << "Contact with index " << index << " doesn't exist" << std::endl;
 		else
-			print_contact(index);
+			_print_contact(index);
 	}
 	else
 		std::cout << str << " is not a valid index, index should be a number between 1 - 8 !" << std::endl;
