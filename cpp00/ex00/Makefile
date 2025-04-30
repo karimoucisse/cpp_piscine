@@ -1,7 +1,7 @@
 NAME = megaphone
 CPP = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
-FILES = main.cpp
+FILES = megaphone.cpp
 
 all : $(NAME)
 $(NAME) :
