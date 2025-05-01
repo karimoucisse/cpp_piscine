@@ -7,3 +7,6 @@ all: $(NAME)
 $(NAME):
 	$(CPP) $(CPPFLAGS) $(CPPFILES) -o $(NAME)
 
+clean:
+	rm -f $(NAME)
+PHONY : all clean
