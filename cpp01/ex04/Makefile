@@ -1,7 +1,7 @@
-NAME = human
+NAME = filename
 CPP = c++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
-CPPFILES = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
+CPPFILES = main.cpp
 all: $(NAME)
 
 $(NAME):
