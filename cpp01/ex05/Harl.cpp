@@ -32,7 +32,7 @@ Harl::~Harl(){
 }
 
 void Harl::complain( std::string level ) {
-	std::string levels[] = {"debug", "info", "warning", "error"};
+	std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	int length = sizeof(levels) / sizeof(levels[0]);
 
 	void (Harl::*f[])(void) = {

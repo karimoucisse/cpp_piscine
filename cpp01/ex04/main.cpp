@@ -21,7 +21,7 @@ void replace_val(std::string *line, std::string s1, std::string s2)
 int main (int ac, char **av)
 {
 	if(ac != 4){
-		std::cerr << "Number of parameter is different is more or less then 3"
+		std::cerr << "Number of parameter is more or less then 3"
 		<< std::endl;
 		return (0);
 	}
