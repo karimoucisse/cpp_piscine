@@ -36,7 +36,7 @@ void Harl::complain( std::string level ) {
 	std::string levels[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	int index = -1;
 	int len = (sizeof(levels)/sizeof(std::string));
-	
+
 	for(int i = 0; i < len; i++)
 	{
 		if(levels[i] == level)
@@ -51,16 +51,16 @@ void Harl::complain( std::string level ) {
 	};
 	switch(index){
 		case 0:
-			(this->*f[0])();
+			this->debug();
 			// fallthrough
 		case 1:
-			(this->*f[1])();
+			this->info();
 			// fallthrough
 		case 2:
-			(this->*f[2])();
+			this->warning();
 			// fallthrough
 		case 3:
-			(this->*f[3])();
+			this->error();
 			break;
 		default:
 			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
