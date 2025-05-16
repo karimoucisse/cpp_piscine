@@ -68,23 +68,23 @@ std::ostream &operator<<(std::ostream &out, const Fixed &fixed) {
 
 Fixed Fixed::operator+(Fixed const& b)
 {
-	Fixed newFixed = Fixed(this->getRawBits() + b.getRawBits());
+	Fixed newFixed = Fixed(this->toFloat() + b.toFloat());
 	return (newFixed);
 }
 
 Fixed Fixed::operator-(Fixed const& b)
 {
-	Fixed newFixed = Fixed(this->getRawBits() - b.getRawBits());
+	Fixed newFixed = Fixed(this->toFloat() - b.toFloat());
 	return (newFixed);
 }
 Fixed Fixed::operator*(Fixed const& b)
 {
-	Fixed newFixed = Fixed(this->getRawBits() * b.getRawBits());
+	Fixed newFixed = Fixed(this->toFloat() * b.toFloat());
 	return (newFixed);
 }
 Fixed Fixed::operator/(Fixed const& b)
 {
-	Fixed newFixed = Fixed(this->getRawBits() / b.getRawBits());
+	Fixed newFixed = Fixed(this->toFloat() / b.toFloat());
 	return (newFixed);
 }
 
@@ -117,29 +117,27 @@ bool Fixed::operator!=(Fixed const& b) const
 
 /////////////////////////////////////////////////////////////////////////
 
-Fixed &Fixed::operator++()
+Fixed &Fixed::operator++() //++a
 {
-	int val = this->getRawBits() + 1;
-	this->setRawBits(val);
+	fixedVal++;
 	return (*this);
 }
-Fixed &Fixed::operator--()
+Fixed &Fixed::operator--() //--a
 {
-	int val = this->getRawBits() - 1;
-	this->setRawBits(val);
+	fixedVal--;
 	return (*this);
 }
-Fixed Fixed::operator++(int i)
+Fixed Fixed::operator++(int) //a++
 {
-	int val = this->getRawBits() + i;
-	this->setRawBits(val);
-	return (*this);
+	Fixed temp = *this;
+	fixedVal++;
+	return (temp);
 }
-Fixed Fixed::operator--(int i)
+Fixed Fixed::operator--(int) //a--
 {
-	int val = this->getRawBits() - i;
-	this->setRawBits(val);
-	return (*this);
+	Fixed temp = *this;
+	fixedVal--;
+	return (temp);
 }
 
 /////////////////////////////////////////////////////////////////////////////
