@@ -1,14 +1,29 @@
-NAME = phonebook
-CPP = c++
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98
-INCLUDE = include
-SRC = src/
-CPPFILES = $(SRC)main.cpp $(SRC)Contact.cpp $(SRC)PhoneBook.cpp
+NAME	=	phonebook
+CPP		=	c++
+INCLUDE =	-Iincludes
+CFLAGS	=	-Wall -Werror -Wextra -std=c++98 $(INCLUDE)
+RM		=	rm -f
+SRC		=	src/
+SRCS	=	$(SRC)main.cpp $(SRC)Contact.cpp $(SRC)PhoneBook.cpp
+OBJS	=	$(SRCS:.cpp=.o)
+
+
 all: $(NAME)
 
-$(NAME):
-	$(CPP) $(CPPFLAGS) $(CPPFILES) -I$(INCLUDE) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CPP) $(CFLAGS) $(OBJS) -o $@
+
+$(SRC)%.o: $(SRC)%.cpp
+	$(CPP) $(CFLAGS) -c $<  -o $@
 
 clean:
-	rm -f $(NAME)
-PHONY : all clean
+	$(RM) $(OBJS)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all bonus clean fclean re
+
+
